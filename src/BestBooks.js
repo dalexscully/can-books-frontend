@@ -35,6 +35,11 @@ class BestBooks extends React.Component {
 
       return (
         <Carousel.Item>
+          <img
+          className="d-block w-100"
+          src="../img/dandebook.jpg"
+          alt="First slide"
+        />
           <h3>{book.title}</h3>
           <Carousel.Caption>
             <h4>Description</h4>

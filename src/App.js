@@ -23,8 +23,8 @@ class App extends React.Component {
             >
             </Route>
             <Route
-              exact path="/"
-              element={<About />}
+              exact path="/about"
+              element={<About/>}
             >
             </Route>
           </Routes>
