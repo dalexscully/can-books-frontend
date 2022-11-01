@@ -27,7 +27,6 @@ class BestBooks extends React.Component {
     })
   }
 
-
   getBooks = async () => {
     try {
       let bookData = await axios.get(`${process.env.REACT_APP_SERVER}/books`)
@@ -48,6 +47,8 @@ class BestBooks extends React.Component {
       status: event.target.Status.checked
     }
     this.postBooks(newBook);
+    this.handleCloseModal();
+
   }
 
   postBooks = async (newBookObj) => {
@@ -57,8 +58,26 @@ class BestBooks extends React.Component {
       let createdBook = await axios.post(url, newBookObj);
 
       this.setState({
-        cats: [...this.state.books, createdBook.data]
+        books: [...this.state.books, createdBook.data]
       })
+
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  deleteBooks = async (id) => {
+    try {
+      let url = `${process.env.REACT_APP_SERVER}/books/${id}`;
+
+      await axios.delete(url);
+
+      let updatedBooks = this.state.books.filter(book => book._id !== id);
+
+      this.setState({
+        books: updatedBooks
+      });
+
 
     } catch (error) {
       console.log(error.message);
@@ -72,20 +91,21 @@ class BestBooks extends React.Component {
   render() {
 
     /* TODO: render all the books in a Carousel */
-    let books = this.state.books.map(book => {
+    let books = this.state.books.map((book, key) => {
 
       return (
-        <Carousel.Item>
+        <Carousel.Item key={book._id}>
           <img
             className="d-block w-100"
             src="../img/dandebook.jpg"
             alt="First slide"
           />
-          <h3>{book.title}</h3>
           <Carousel.Caption>
+            <h3>{book.title}</h3>
             <h4>Description</h4>
             <p>{book.description}</p>
           </Carousel.Caption>
+          <Button variant="dark" onClick={() => { this.deleteBooks(this.props.book._id) }}>Delete</Button>
         </Carousel.Item>
       )
     })
@@ -102,7 +122,7 @@ class BestBooks extends React.Component {
         )}
 
         <Button variant='primary' onClick={this.handleOpenModal}>Add Book</Button>
-        <BookFormModal modalShow={this.state.modalShow} modalHide={this.handleCloseModal} handleSubmit={this.handleBookSubmit}/>
+        <BookFormModal modalShow={this.state.modalShow} modalHide={this.handleCloseModal} handleSubmit={this.handleBookSubmit} />
       </>
     )
   }

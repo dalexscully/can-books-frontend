@@ -7,7 +7,7 @@ class BookForm extends React.Component {
     return (
       <>
        <Container className="mt-5">
-          <Form onSubmit={this.props.handleBookSubmit}>
+          <Form onSubmit={this.props.handleSubmit}>
             <Form.Group controlId="Title">
               <Form.Label>Title</Form.Label>
               <Form.Control type="text" />
