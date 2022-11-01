@@ -12,13 +12,13 @@ class Profile extends Component {
           <li><a href="https://github.com/dalexscully">My github</a></li>
 
         </ul>
-        <p></p>
+        <p>I'm Domaine Scully. I am an upcoming software developer. I'm working with newest front-end and back-end frameworks like React, Python etc. What you are seeing now seeing is a beautiful website developed and created through team work. I have a zeal for programming and made it my commitment to strive from greatness in my new career as a software engineer.</p>
         <h3>Eric Kinuthia</h3>
         <ul>
           <li><a href="https://github.com/EricMungai97">My github</a></li>
 
         </ul>
-        <p>Before I switched over to software development, I was working as a delivery driver for Amazon. Working there helped me develop a growth mindset which is critical in becoming a good software dev. I have always been passionate about computers and how they help us solve problems in day to day life. I chose to transition into software development at this point in my life to equip myself with the technical know how and skills to be able to create software that helps make people lives easier. And most importantly to be able to do what I love for work.</p>
+        <p>Hi my name is Eric Kinuthia. Before I switched over to software development, I was working as a delivery driver for Amazon. Working there helped me develop a growth mindset which is critical in becoming a good software dev. I have always been passionate about computers and how they help us solve problems in day to day life. I chose to transition into software development at this point in my life to equip myself with the technical know how and skills to be able to create software that helps make people lives easier. And most importantly to be able to do what I love for work.</p>
       </>
     )
   }

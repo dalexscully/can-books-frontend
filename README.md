@@ -1,14 +1,14 @@
-Name of feature: ________________________________
+# Name of feature: Adding books
 
 Estimate of time needed to complete: 6hrs
 
-Start time: _____
+Start time: 3pm
 
-Finish time: _____
+Finish time: 7pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 4hrs
 
-# Start your own "Can of Books" App
+## Start your own "Can of Books" App
 
 This repository has starter code to begin work on creating your own online bookshelf.
 
@@ -23,6 +23,7 @@ Clone this repo to your own account with the green "Use this template" button. T
 ## Project Name
 
 **Author**: Domaine Scully and Eric Mungai Kinuthia
+
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
@@ -44,4 +45,5 @@ Clone this repo to your own account with the green "Use this template" button. T
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
 [wrc](/Prof%20pair%20docs.jpg)
