@@ -1,17 +1,33 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
+import { Button } from 'react-bootstrap';
+import BookFormModal from './BookFormModal';
 
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      modalShow: false
     }
   }
 
   /* TODO: Make a GET request to your API to fetch all the books from the database  */
+  handleOpenModal = () => {
+    this.setState({
+      modalShow: true
+    })
+  }
+
+  handleCloseModal = () => {
+    this.setState({
+      modalShow: false
+    })
+  }
+
+
   getBooks = async () => {
     try {
       let bookData = await axios.get(`${process.env.REACT_APP_SERVER}/books`)
@@ -21,6 +37,31 @@ class BestBooks extends React.Component {
 
     } catch (error) {
       console.log('We have an error:', error.response)
+    }
+  }
+
+  handleBookSubmit = (event) => {
+    event.preventDefault();
+    let newBook = {
+      title: event.target.Title.value,
+      description: event.target.Description.value,
+      status: event.target.Status.checked
+    }
+    this.postBooks(newBook);
+  }
+
+  postBooks = async (newBookObj) => {
+    try {
+      let url = `${process.env.REACT_APP_SERVER}/books`;
+
+      let createdBook = await axios.post(url, newBookObj);
+
+      this.setState({
+        cats: [...this.state.books, createdBook.data]
+      })
+
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
@@ -36,10 +77,10 @@ class BestBooks extends React.Component {
       return (
         <Carousel.Item>
           <img
-          className="d-block w-100"
-          src="../img/dandebook.jpg"
-          alt="First slide"
-        />
+            className="d-block w-100"
+            src="../img/dandebook.jpg"
+            alt="First slide"
+          />
           <h3>{book.title}</h3>
           <Carousel.Caption>
             <h4>Description</h4>
@@ -55,9 +96,13 @@ class BestBooks extends React.Component {
 
         {this.state.books.length > 0 ? (
           <Carousel>{books}</Carousel>
+
         ) : (
           <h3>No Books Found :(</h3>
         )}
+
+        <Button variant='primary' onClick={this.handleOpenModal}>Add Book</Button>
+        <BookFormModal modalShow={this.state.modalShow} modalHide={this.handleCloseModal} handleSubmit={this.handleBookSubmit}/>
       </>
     )
   }
