@@ -104,8 +104,8 @@ class BestBooks extends React.Component {
             <h3>{book.title}</h3>
             <h4>Description</h4>
             <p>{book.description}</p>
+          <Button variant="dark" onClick={() => { this.deleteBooks(book._id) }}>Delete</Button>
           </Carousel.Caption>
-          <Button variant="dark" onClick={() => { this.deleteBooks(this.props.book._id) }}>Delete</Button>
         </Carousel.Item>
       )
     })
