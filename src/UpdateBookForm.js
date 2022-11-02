@@ -15,7 +15,8 @@ class UpdateBookForm extends React.Component {
     }
     // console.log('UPDATED: ', bookToUpdate);
 
-    this.props.updateBooks(bookToUpdate);
+    this.props.updatedBook(bookToUpdate);
+    this.props.onHide();
   }
 
 
@@ -23,7 +24,7 @@ class UpdateBookForm extends React.Component {
     return (
       <>
         <Container >
-          <Form onSubmit={this.props.handleSubmit}>
+          <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="Title">
               <Form.Label>Title</Form.Label>
               <Form.Control type="text" defaultValue={this.props.book.title} />

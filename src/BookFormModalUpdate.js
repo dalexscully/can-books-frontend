@@ -1,5 +1,5 @@
 import React from 'react';
-import UpdateBookForm from './BookForm';
+import UpdateBookForm from './UpdateBookForm.js';
 import { Modal } from 'react-bootstrap';
 
 
@@ -8,15 +8,15 @@ class BookFormModalUpdate extends React.Component {
     return (
       <>
         <Modal
-          show={this.props.modalShow}
-          onHide={this.props.modalHide}
+          show={this.props.modalShowUpdate}
+          onHide={this.props.modalHideUpdate}
         >
-          <Modal.Header closeButton onHide={this.props.modalHide}>
+          <Modal.Header closeButton onHide={this.props.modalHideUpdate}>
             <Modal.Title>Update a Book</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            <UpdateBookForm handleSubmit={this.props.handleSubmit} book={this.props.book} />
+            <UpdateBookForm onHide={this.props.modalHideUpdate} updatedBook={this.props.updatedBook} book={this.props.book}/>
           </Modal.Body>
 
           <Modal.Footer>
