@@ -1,12 +1,12 @@
-# Name of feature: New Book To The Shelf
+# Name of feature: Updated Book To The Shelf
 
-Estimate of time needed to complete: 6hrs
+Estimate of time needed to complete: 3hrs
 
-Start time: 5pm
+Start time: 4pm
 
-Finish time: 9:45pm
+Finish time: 7:10pm
 
-Actual time needed to complete: 7hrs
+Actual time needed to complete: 3hrs
 
 ## Start your own "Can of Books" App
 
@@ -39,15 +39,19 @@ What are the steps that a user must take in order to build this app on their own
 Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. The languages used were MERN and Javascript.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+
+11-02-2022 7:08pm - Application now has been and is fully-functional regarding express server, with a GET route for the location resource. 
 
 ## Estimates
 <!-- See below -->
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+Give credit (and a link) to other people or resources that helped you build this application.
+Credit goes to Audrey our wonderful instructor
+and all the TAs that assisted us.
 
 ## Team Agreement
 
@@ -71,6 +75,7 @@ Make a list of each person's strengths.
 1. JavaScript
 2. Node.js
 3. Express. Js
+4. MongoDB
 ***Eric***
 1. React bootstrap
 2. React JS

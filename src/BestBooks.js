@@ -24,9 +24,10 @@ class BestBooks extends React.Component {
     })
   }
 
-  openUpdateModal = () => {
+  openUpdateModal = (bookObj) => {
     this.setState({
-      modalShowUpdate: true
+      modalShowUpdate: true,
+      book: bookObj
     })
   }
 
@@ -39,7 +40,7 @@ class BestBooks extends React.Component {
 
   closeUpdateModal = () => {
     this.setState({
-      modalShow: false
+      modalShowUpdate: false
     })
   }
 
@@ -99,23 +100,23 @@ class BestBooks extends React.Component {
     }
   }
 
-  updatedBooks = async (bookToUpdate) => {
-    
+  updatedBook = async (bookToUpdate) => {
+
     try {
-      
+
       let url = `${process.env.REACT_APP_SERVER}/books/${bookToUpdate._id}`
       let updatedBook = await axios.put(url, bookToUpdate);
-      
+
       let updatedBookArray = this.state.books.map(existingBook => {
         return existingBook._id === bookToUpdate._id
-        ? updatedBook.data
-        : existingBook
+          ? updatedBook.data
+          : existingBook
       })
-      
+
       this.setState({
         books: updatedBookArray
       });
-      
+
     } catch (error) {
       console.log(error.message);
     }
@@ -124,14 +125,15 @@ class BestBooks extends React.Component {
   componentDidMount() {
     this.getBooks();
   }
-  
+
   render() {
-    
+
     /* TODO: render all the books in a Carousel */
     let books = this.state.books.map((book, key) => {
-      
+
       return (
-        <Carousel.Item key={book._id}>
+        <Carousel.Item
+          key={book._id}>
           <img
             className="d-block w-100"
             src="../img/dandebook.jpg"
@@ -142,7 +144,7 @@ class BestBooks extends React.Component {
             <h4>Description</h4>
             <p>{book.description}</p>
             <Button variant="dark" onClick={() => { this.deleteBooks(book._id) }}>Delete Book</Button>
-            <Button variant="info" onClick={this.state.state.modalShowUpdate}>Update Book</Button>
+            <Button variant="info" onClick={() => { this.openUpdateModal(book) }}>Update Book</Button>
           </Carousel.Caption>
         </Carousel.Item>
       )
@@ -162,10 +164,10 @@ class BestBooks extends React.Component {
         <Button variant='primary' onClick={this.handleOpenModal}>Add Book</Button>
         <BookFormModal modalShow={this.state.modalShow} modalHide={this.handleCloseModal} handleSubmit={this.handleBookSubmit} />
         <BookFormModalUpdate
-        modalShow={this.state.modalShowUpdate} modalHide={this.closeUpdateModal} handleSubmit={this.updatedBooks} book={this.state.book}
+          modalShowUpdate={this.state.modalShowUpdate} modalHideUpdate={this.closeUpdateModal} updatedBook={this.updatedBook} book={this.state.book}
         />
       </>
-      
+
     )
   }
 }
