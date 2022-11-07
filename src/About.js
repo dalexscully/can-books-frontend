@@ -12,7 +12,7 @@ class Profile extends Component {
           <li><a href="https://github.com/dalexscully">My github</a></li>
 
         </ul>
-        <p>I'm Domaine Scully. I am an upcoming software developer. I'm working with newest front-end and back-end frameworks like React, Python etc. What you are seeing now seeing is a beautiful website developed and created through team work. I have a zeal for programming and made it my commitment to strive from greatness in my new career as a software engineer.</p>
+        <p>Hello! My name is Domaine Scully. I am an up and coming software developer. I'm working with newest front-end and back-end frameworks like MERN, HTML5, CSS3, JavaScript and Python. What you are seeing now is a beautiful designed website developed and created through implementing various frameworks. I have a zeal for programming and made it my commitment to strive from greatness in my new career as a software engineer.</p>
         <h3>Eric Kinuthia</h3>
         <ul>
           <li><a href="https://github.com/EricMungai97">My github</a></li>
