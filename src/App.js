@@ -5,7 +5,6 @@ import Footer from './Footer';
 import BestBooks from './BestBooks';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from './Profile';
-import Login from './Login';
 import { withAuth0 } from '@auth0/auth0-react';
 import {
   BrowserRouter as Router,
@@ -65,7 +64,6 @@ class App extends React.Component {
         </Routes>
         <Footer />
       </Router>
-        <Login/>
         </>}
       </>
     )
