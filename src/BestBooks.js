@@ -4,6 +4,9 @@ import Carousel from 'react-bootstrap/Carousel';
 import { Button } from 'react-bootstrap';
 import BookFormModal from './BookFormModal';
 import BookFormModalUpdate from './BookFormModalUpdate';
+import { withAuth0 } from '@auth0/auth0-react';
+
+
 
 
 class BestBooks extends React.Component {
@@ -44,17 +47,6 @@ class BestBooks extends React.Component {
     })
   }
 
-  getBooks = async () => {
-    try {
-      let bookData = await axios.get(`${process.env.REACT_APP_SERVER}/books`)
-      this.setState({
-        books: bookData.data
-      });
-
-    } catch (error) {
-      console.log('We have an error:', error.response)
-    }
-  }
 
   handleBookSubmit = (event) => {
     event.preventDefault();
@@ -100,6 +92,27 @@ class BestBooks extends React.Component {
     }
   }
 
+  getBook =  async () => {
+     if (this.props.auth0.isAuthenticated) {
+       const res = await this.props.auth0.getIdTokenClaims();
+ 
+       const jwt = res.__raw;
+ 
+       console.log('token:  ', jwt);
+ 
+       const config = {
+         headers: { "Authorization": `Bearer ${jwt}` },
+         baseURL: process.env.REACT_APP_SERVER,
+         method: 'get',
+         url: '/books'
+       }
+       let bookData = await axios(config);
+       this.setState({
+         books: bookData.data
+       });
+     }
+   }
+
   updatedBook = async (bookToUpdate) => {
 
     try {
@@ -122,9 +135,10 @@ class BestBooks extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.getBooks();
+   componentDidMount() {
+     this.getBook();
   }
+
 
   render() {
 
@@ -153,12 +167,10 @@ class BestBooks extends React.Component {
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-
         {this.state.books.length > 0 ? (
-          <Carousel>{books}</Carousel>
-
+            <Carousel>{books}</Carousel>
         ) : (
-          <h3>No Books Found :(</h3>
+            <h3>No Books Found :(</h3>
         )}
 
         <Button variant='primary' onClick={this.handleOpenModal}>Add Book</Button>
@@ -172,4 +184,6 @@ class BestBooks extends React.Component {
   }
 }
 
-export default BestBooks;
+
+
+export default withAuth0(BestBooks);

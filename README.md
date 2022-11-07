@@ -42,7 +42,7 @@ Provide a detailed description of the application design. What technologies (lan
 
 Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-11-02-2022 7:08pm - Application now has been and is fully-functional regarding express server, with a GET route for the location resource. 
+11-02-2022 7:08pm - Application now has been and is fully-functional regarding express server, with a GET route for the location resource.
 
 ## Estimates
 <!-- See below -->
